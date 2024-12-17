@@ -8,7 +8,7 @@ scene.background = new THREE.Color("black");
 
 // Setup a camera
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 20000);
-camera.position.set(0, 0, 12);
+camera.position.set(0, -6, 12);
 
 // Setup the renderer
 const canvas = document.querySelector("canvas.threejs");
@@ -21,8 +21,10 @@ const ambientLight = new THREE.AmbientLight(0x404040, 5);
 scene.add(ambientLight);
 
 const pointLight = new THREE.PointLight(0xffffff, 500);
-pointLight.position.set(0, 0, 12);
+pointLight.position.set(-6, 0, 10);
 scene.add(pointLight);
+
+
 
 // Define all geometries
 const geometries = {
@@ -61,7 +63,7 @@ const createMeshesForShape = (shapeName) => {
   meshes.forEach(({ mesh }) => scene.remove(mesh));
   meshes.length = 0;
 
-  let xOffset = -6;
+  let xOffset = -12;
   for (const key in materials) {
     const mesh = new THREE.Mesh(geometries[shapeName], materials[key]);
     mesh.position.x = xOffset; // Position each mesh horizontally
